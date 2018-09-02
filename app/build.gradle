@@ -39,6 +39,9 @@ dependencies {
     implementation "android.arch.navigation:navigation-ui-ktx:$project.navVersion"
     // Server
     implementation "com.squareup.retrofit2:retrofit:$project.retrofitVersion"
+    // Database
+    implementation "android.arch.persistence.room:runtime:$project.roomVersion"
+    kapt "android.arch.persistence.room:compiler:$project.roomVersion"
     // Test
     testImplementation "junit:junit:$project.junitVersion"
     androidTestImplementation "androidx.test:runner:$project.testRunnerVersion"

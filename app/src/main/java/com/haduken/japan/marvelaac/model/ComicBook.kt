@@ -1,3 +1,4 @@
 package com.haduken.japan.marvelaac.model
 
-data class ComicBook(val comicId: String, val title: String, val artUrl: String)
+data class ComicBook(val comicId: String, val title: String, val artUrl: String,
+                     val artists: List<Artist>, val writers: List<Writer>)
