@@ -6,6 +6,7 @@ import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 import com.haduken.japan.marvelaac.database.dao.ArtistDAO
 import com.haduken.japan.marvelaac.database.dao.ComicBookDAO
+import com.haduken.japan.marvelaac.database.dao.ComicJoinsDAO
 import com.haduken.japan.marvelaac.database.dao.WriterDAO
 import com.haduken.japan.marvelaac.database.entity.ComicBookEntity
 
@@ -18,6 +19,8 @@ abstract class DataBase : RoomDatabase() {
     abstract fun artistDAO() : ArtistDAO
 
     abstract fun writerDAO() : WriterDAO
+
+    abstract fun comicJoinsDAO() : ComicJoinsDAO
 
 
     companion object {
