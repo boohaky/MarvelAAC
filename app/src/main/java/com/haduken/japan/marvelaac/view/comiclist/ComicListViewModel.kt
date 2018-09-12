@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 
-import com.haduken.japan.marvelaac.model.ComicBookItem
+import com.haduken.japan.marvelaac.view.model.ComicBookItem
 
 class ComicListViewModel(application: Application) : AndroidViewModel(application) {
 

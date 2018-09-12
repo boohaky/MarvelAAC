@@ -8,6 +8,6 @@ import androidx.annotation.NonNull
 
 @Entity(tableName = "Writers",
         indices = [Index(value = ["writerId"], unique = true)])
-data class WriterEntity(@PrimaryKey val id: Long,
+data class WriterEntity(@PrimaryKey(autoGenerate = true) val id: Long = -1,
                         @NonNull val writerId: String,
                         val name: String)
