@@ -42,6 +42,9 @@ dependencies {
     // Database
     implementation "android.arch.persistence.room:runtime:$project.roomVersion"
     kapt "android.arch.persistence.room:compiler:$project.roomVersion"
+    // Dagger
+    compile "com.google.dagger:dagger:$project.daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$project.daggerVersion"
     // Test
     testImplementation "junit:junit:$project.junitVersion"
     androidTestImplementation "androidx.test:runner:$project.testRunnerVersion"
