@@ -3,11 +3,12 @@ package com.haduken.japan.marvelaac.view.comicdata
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.haduken.japan.marvelaac.database.entity.ComicBookEntity
+import androidx.lifecycle.MutableLiveData
+import com.haduken.japan.marvelaac.domain.model.ComicBook
 
 
 class ComicDataViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val comicBookData: LiveData<ComicBookEntity>? = null
+    val comicBookData: LiveData<ComicBook> = MutableLiveData<ComicBook>()
 
 }
