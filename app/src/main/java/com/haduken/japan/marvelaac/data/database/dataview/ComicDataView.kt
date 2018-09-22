@@ -1,7 +1,7 @@
 package com.haduken.japan.marvelaac.data.database.dataview
 
-import android.arch.persistence.room.Embedded
-import android.arch.persistence.room.Relation
+import androidx.room.*
+
 import com.haduken.japan.marvelaac.data.database.entity.ArtistEntity
 import com.haduken.japan.marvelaac.data.database.entity.ComicBookEntity
 import com.haduken.japan.marvelaac.data.database.entity.WriterEntity

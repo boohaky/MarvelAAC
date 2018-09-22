@@ -1,4 +1,4 @@
-package boohaky.japan.haduken.imdead.widget.recycler
+package com.haduken.japan.marvelaac.widget.recycler
 
 import android.view.View
 

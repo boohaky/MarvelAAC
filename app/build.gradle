@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
 
     compileSdkVersion project.currentSDK
@@ -14,6 +16,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas".toString())
+            }
+        }
     }
     buildTypes {
         release {
@@ -40,11 +48,11 @@ dependencies {
     // Server
     implementation "com.squareup.retrofit2:retrofit:$project.retrofitVersion"
     // Database
-    implementation "android.arch.persistence.room:runtime:$project.roomVersion"
-    kapt "android.arch.persistence.room:compiler:$project.roomVersion"
+    implementation "androidx.room:room-runtime:$project.roomVersion"
+    kapt "androidx.room:room-compiler:$project.roomVersion"
     // Dagger
-    compile "com.google.dagger:dagger:$project.daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-compiler:$project.daggerVersion"
+    implementation "com.google.dagger:dagger:$project.daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$project.daggerVersion"
     // Test
     testImplementation "junit:junit:$project.junitVersion"
     androidTestImplementation "androidx.test:runner:$project.testRunnerVersion"

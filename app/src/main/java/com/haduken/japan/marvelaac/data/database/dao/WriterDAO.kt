@@ -1,6 +1,6 @@
 package com.haduken.japan.marvelaac.data.database.dao
 
-import android.arch.persistence.room.*
+import androidx.room.*
 import com.haduken.japan.marvelaac.data.database.entity.WriterEntity
 
 

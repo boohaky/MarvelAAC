@@ -1,7 +1,7 @@
-package boohaky.japan.haduken.imdead.widget.recycler
+package com.haduken.japan.marvelaac.widget.recycler
 
-import android.support.v7.widget.RecyclerView
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 
 abstract class BaseRecylcerAdapter<VH : BaseRecylcerAdapter.BaseViewHolder> : RecyclerView.Adapter<VH>() {
 

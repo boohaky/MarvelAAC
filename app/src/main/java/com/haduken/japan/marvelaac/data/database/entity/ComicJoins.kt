@@ -1,7 +1,7 @@
 package com.haduken.japan.marvelaac.data.database.entity
 
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.ForeignKey
+import androidx.room.*
+
 import androidx.annotation.NonNull
 
 @Entity(primaryKeys = ["comicId", "artistId"],
@@ -12,10 +12,11 @@ import androidx.annotation.NonNull
             ForeignKey(entity = ArtistEntity::class,
                     parentColumns = ["id"],
                     childColumns = ["artistId"])
-        ])
+        ],
+        indices = [Index("artistId")])
 class ComicArtistJoin(@NonNull val comicId: Long, @NonNull val artistId: Long)
 
-@Entity(primaryKeys = ["comicId", "artistId"],
+@Entity(primaryKeys = ["comicId", "writerId"],
         foreignKeys = [
             ForeignKey(entity = ComicBookEntity::class,
                     parentColumns = ["id"],
@@ -23,5 +24,6 @@ class ComicArtistJoin(@NonNull val comicId: Long, @NonNull val artistId: Long)
             ForeignKey(entity = WriterEntity::class,
                     parentColumns = ["id"],
                     childColumns = ["writerId"])
-        ])
+        ],
+        indices = [Index("writerId")])
 class ComicWriterJoin(@NonNull val comicId: Long, @NonNull val writerId: Long)

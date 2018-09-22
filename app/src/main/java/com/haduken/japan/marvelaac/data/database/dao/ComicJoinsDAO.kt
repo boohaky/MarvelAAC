@@ -1,12 +1,11 @@
 package com.haduken.japan.marvelaac.data.database.dao
 
-import android.arch.persistence.room.Delete
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.Update
+import androidx.room.*
+
 import com.haduken.japan.marvelaac.data.database.entity.ComicArtistJoin
 import com.haduken.japan.marvelaac.data.database.entity.ComicWriterJoin
 
-
+@Dao
 interface ComicJoinsDAO {
 
     @Insert
