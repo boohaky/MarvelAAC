@@ -47,6 +47,8 @@ dependencies {
     implementation "android.arch.navigation:navigation-ui-ktx:$project.navVersion"
     // Server
     implementation "com.squareup.retrofit2:retrofit:$project.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$project.retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$project.okHTTPVersion"
     // Database
     implementation "androidx.room:room-runtime:$project.roomVersion"
     kapt "androidx.room:room-compiler:$project.roomVersion"
