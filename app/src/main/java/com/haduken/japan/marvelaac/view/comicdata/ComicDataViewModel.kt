@@ -10,9 +10,9 @@ import com.haduken.japan.marvelaac.domain.model.ComicBook
 
 class ComicDataViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val comicBookRepository = DaggerComicBookRepositoryComponent.create().getRepository()
+    val comicBookData = MutableLiveData<ComicBook>()
 
-    private val comicBookData = MutableLiveData<ComicBook>()
+    private val comicBookRepository = DaggerComicBookRepositoryComponent.create().getRepository()
     private lateinit var comicId: String
 
     fun requestComicInfo() {

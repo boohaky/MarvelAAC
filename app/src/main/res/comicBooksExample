@@ -1,0 +1,135 @@
+{
+  "id": 6862,
+  "digitalId": 30022,
+  "title": "The Amazing Spider-Man (1963) #441",
+  "issueNumber": 441,
+  "variantDescription": "",
+  "description": null,
+  "modified": "-0001-11-30T00:00:00-0500",
+  "isbn": "",
+  "upc": "",
+  "diamondCode": "",
+  "ean": "",
+  "issn": "",
+  "format": "Comic",
+  "pageCount": 0,
+  "textObjects": [],
+  "resourceURI": "http://gateway.marvel.com/v1/public/comics/6862",
+  "urls": [
+    {
+      "type": "detail",
+      "url": "http://marvel.com/comics/issue/6862/the_amazing_spider-man_1963_441?utm_campaign=apiRef&utm_source=32a15971ebb61eb9f7efef30b77edba4"
+    },
+    {
+      "type": "reader",
+      "url": "http://marvel.com/digitalcomics/view.htm?iid=30022&utm_campaign=apiRef&utm_source=32a15971ebb61eb9f7efef30b77edba4"
+    }
+  ],
+  "series": {
+    "resourceURI": "http://gateway.marvel.com/v1/public/series/1987",
+    "name": "The Amazing Spider-Man (1963 - 1998)"
+  },
+  "variants": [],
+  "collections": [],
+  "collectedIssues": [],
+  "dates": [
+    {
+      "type": "onsaleDate",
+      "date": "1998-11-10T00:00:00-0500"
+    },
+    {
+      "type": "focDate",
+      "date": "-0001-11-30T00:00:00-0500"
+    },
+    {
+      "type": "unlimitedDate",
+      "date": "2013-06-10T00:00:00-0400"
+    }
+  ],
+  "prices": [
+    {
+      "type": "printPrice",
+      "price": 0
+    }
+  ],
+  "thumbnail": {
+    "path": "http://i.annihil.us/u/prod/marvel/i/mg/c/40/51ed4c9da7e03",
+    "extension": "jpg"
+  },
+  "images": [
+    {
+      "path": "http://i.annihil.us/u/prod/marvel/i/mg/f/90/57e18cf7e4aca",
+      "extension": "jpg"
+    },
+    {
+      "path": "http://i.annihil.us/u/prod/marvel/i/mg/c/40/51ed4c9da7e03",
+      "extension": "jpg"
+    }
+  ],
+  "creators": {
+    "available": 5,
+    "collectionURI": "http://gateway.marvel.com/v1/public/comics/6862/creators",
+    "items": [
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/creators/11403",
+        "name": "RSComicraft",
+        "role": "letterer"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/creators/2529",
+        "name": "Liz Agraphiotis",
+        "role": "letterer"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/creators/3940",
+        "name": "Rafael Kayanan",
+        "role": "penciller"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/creators/1927",
+        "name": "Bud Larosa",
+        "role": "inker"
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/creators/1282",
+        "name": "Ralph Macchio",
+        "role": "editor"
+      }
+    ],
+    "returned": 5
+  },
+  "characters": {
+    "available": 1,
+    "collectionURI": "http://gateway.marvel.com/v1/public/comics/6862/characters",
+    "items": [
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009610",
+        "name": "Spider-Man"
+      }
+    ],
+    "returned": 1
+  },
+  "stories": {
+    "available": 2,
+    "collectionURI": "http://gateway.marvel.com/v1/public/comics/6862/stories",
+    "items": [
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/14309",
+        "name": "Amazing Spider-Man (1963) #441",
+        "type": ""
+      },
+      {
+        "resourceURI": "http://gateway.marvel.com/v1/public/stories/66306",
+        "name": "AMAZING SPIDER-MAN 441 cover",
+        "type": "cover"
+      }
+    ],
+    "returned": 2
+  },
+  "events": {
+    "available": 0,
+    "collectionURI": "http://gateway.marvel.com/v1/public/comics/6862/events",
+    "items": [],
+    "returned": 0
+  }
+}

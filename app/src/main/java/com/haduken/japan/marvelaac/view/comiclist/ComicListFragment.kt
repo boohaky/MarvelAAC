@@ -9,6 +9,18 @@ import com.haduken.japan.marvelaac.extensions.get
 
 class ComicListFragment : Fragment() {
 
+    private lateinit var viewModel : ComicListViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProviders.of(this).get()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.requestComicBookItems()
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val viewModel = ViewModelProviders.of(this).get<ComicListViewModel>()
