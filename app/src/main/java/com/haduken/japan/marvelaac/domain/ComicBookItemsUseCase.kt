@@ -8,8 +8,6 @@ class ComicBookItemsUseCase(private val comicId: String,
 
     override fun execute(success: (response: List<ComicBookItem>) -> Unit,
                          error: (error: Exception) -> Unit) {
-        repository.getComicBookItems(comicId, {
-            success.invoke(it)
-        }, {})
+        repository.getComicBookItems(comicId, { success.invoke(it) })
     }
 }

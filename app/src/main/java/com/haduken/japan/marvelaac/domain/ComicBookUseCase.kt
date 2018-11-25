@@ -9,9 +9,7 @@ class ComicBookUseCase @Inject constructor(private val comicId: String,
 
     override fun execute(success: (response: ComicBook) -> Unit,
                          error: (error: Exception) -> Unit) {
-        repository.getComicBook(comicId) {
-            success.invoke(it)
-        }
+        repository.getComicBook(comicId, { success.invoke(it) })
     }
 
 }

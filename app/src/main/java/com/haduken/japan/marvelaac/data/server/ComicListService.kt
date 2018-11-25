@@ -1,6 +1,6 @@
 package com.haduken.japan.marvelaac.data.server
 
-import com.haduken.japan.marvelaac.AdditinalInfo
+import com.haduken.japan.marvelaac.AdditionalInfo
 import okhttp3.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,7 +16,7 @@ interface ComicListService {
     fun getComicSeries(@Path("seriesId") seriesId: String): Call
 
     @GET("/v1/public/series/{seriesId}/comics")
-    fun getComicsInSeries(@Path("seriesId") seriesId: String = AdditinalInfo.AMAZING_SPIDER_MAN_ID): Call
+    fun getComicsInSeries(@Path("seriesId") seriesId: String = AdditionalInfo.AMAZING_SPIDER_MAN_ID): Call
 
     @GET("/v1/public/comics/{comicId}")
     fun getComicInfo(@Path("comicId") seriesId: String): Call

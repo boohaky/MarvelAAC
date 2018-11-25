@@ -2,9 +2,8 @@ package com.haduken.japan.marvelaac.data.database.dataview
 
 import androidx.room.*
 
-import com.haduken.japan.marvelaac.data.database.entity.ArtistEntity
+import com.haduken.japan.marvelaac.data.database.entity.CreatorEntity
 import com.haduken.japan.marvelaac.data.database.entity.ComicBookEntity
-import com.haduken.japan.marvelaac.data.database.entity.WriterEntity
 
 class ComicDataView {
 
@@ -14,13 +13,7 @@ class ComicDataView {
     @Relation(
             parentColumn = "id",
             entityColumn = "subject_id",
-            entity = ArtistEntity::class)
-    var artists: List<ArtistEntity> = emptyList()
-
-    @Relation(
-            parentColumn = "id",
-            entityColumn = "subject_id",
-            entity = WriterEntity::class)
-    var writers: List<WriterEntity> = emptyList()
+            entity = CreatorEntity::class)
+    var creators: List<CreatorEntity> = emptyList()
 
 }

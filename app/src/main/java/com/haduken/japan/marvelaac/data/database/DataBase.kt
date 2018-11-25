@@ -5,24 +5,21 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.haduken.japan.marvelaac.data.database.dao.ArtistDAO
+import com.haduken.japan.marvelaac.data.database.dao.CreatorDAO
 import com.haduken.japan.marvelaac.data.database.dao.ComicBookDAO
-import com.haduken.japan.marvelaac.data.database.dao.ComicJoinsDAO
-import com.haduken.japan.marvelaac.data.database.dao.WriterDAO
+import com.haduken.japan.marvelaac.data.database.dao.ComicCreatorJoinDAO
 import com.haduken.japan.marvelaac.data.database.entity.*
 
 
-@Database(entities = [ComicBookEntity::class, ArtistEntity::class, WriterEntity::class,
-    ComicArtistJoin::class, ComicWriterJoin::class], version = 1)
+@Database(entities = [ComicBookEntity::class, CreatorEntity::class,
+    ComicCreatorJoin::class], version = 1)
 abstract class DataBase : RoomDatabase() {
 
     abstract fun comicBookDAO(): ComicBookDAO
 
-    abstract fun artistDAO(): ArtistDAO
+    abstract fun artistDAO(): CreatorDAO
 
-    abstract fun writerDAO(): WriterDAO
-
-    abstract fun comicJoinsDAO(): ComicJoinsDAO
+    abstract fun comicJoinsDAO(): ComicCreatorJoinDAO
 
 
     companion object {
