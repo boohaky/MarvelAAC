@@ -1,6 +1,6 @@
-package com.haduken.japan.marvelaac
+package com.haduken.japan.marvelaac.additionalinfo
 
-class AdditionalInfo {
+class Info {
 
     companion object {
         const val AMAZING_SPIDER_MAN_ID = "1987"
