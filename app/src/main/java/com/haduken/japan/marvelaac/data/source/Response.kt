@@ -21,9 +21,7 @@ open class SourceResponse protected constructor(val success: Boolean = true,
 }
 
 class DataSourceResponse<T> private constructor(success: Boolean = true, exception: Exception? = null,
-                                                private val data: T? = null)
-    : SourceResponse(success, exception) {
-
+                                                private val data: T? = null) : SourceResponse(success, exception) {
 
     companion object {
 

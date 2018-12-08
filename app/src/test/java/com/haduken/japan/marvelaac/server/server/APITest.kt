@@ -1,8 +1,9 @@
-package com.haduken.japan.marvelaac.server
+package com.haduken.japan.marvelaac.server.server
 
+import com.haduken.japan.marvelaac.server.TestComicListService
 import org.junit.Test
 
-class ServerTest {
+class APITest {
 
 
     companion object {
