@@ -6,9 +6,8 @@ import androidx.annotation.NonNull
 
 
 @Entity(tableName = "Creators",
-        indices = [
-            Index(value = ["id"], unique = true),
-            Index(value = ["creatorUri"], unique = true)])
+        indices = [Index(value = ["id"], unique = true)])
 data class CreatorEntity(@PrimaryKey(autoGenerate = true) val id: Long = -1,
                          @NonNull val creatorUri: String,
-                         val name: String)
+                         val name: String,
+                         val role: String)
