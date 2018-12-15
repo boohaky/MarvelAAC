@@ -1,7 +1,8 @@
-package com.haduken.japan.marvelaac
+package com.haduken.japan.marvelaac.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.haduken.japan.marvelaac.R
 
 class MainActivity : AppCompatActivity() {
 

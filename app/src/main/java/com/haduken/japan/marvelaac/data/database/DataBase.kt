@@ -23,22 +23,10 @@ abstract class DataBase : RoomDatabase() {
 
 
     companion object {
-        private var INSTANCE: DataBase? = null
-
-        fun getInstance(context: Context): DataBase? {
-            if (INSTANCE == null) {
-                synchronized(DataBase::class) {
-                    INSTANCE = Room.databaseBuilder(context.applicationContext,
-                            DataBase::class.java, "weather.db")
-                            .allowMainThreadQueries()
-                            .build()
-                }
-            }
-            return INSTANCE
-        }
-
-        fun destroyInstance() {
-            INSTANCE = null
+        fun getInstance(context: Context): DataBase {
+            return Room.databaseBuilder(context.applicationContext, DataBase::class.java, "marvel.db")
+                    .allowMainThreadQueries()
+                    .build()
         }
     }
 
