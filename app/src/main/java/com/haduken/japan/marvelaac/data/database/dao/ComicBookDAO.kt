@@ -7,6 +7,9 @@ import androidx.room.*
 @Dao
 interface ComicBookDAO {
 
+    @Query("SELECT * from ComicBooks WHERE comicId = :comicId")
+    fun getSingeData(comicId: String): ComicBookEntity
+
     @Query("SELECT * from ComicBooks")
     fun getAll(): List<ComicBookEntity>
 
@@ -16,8 +19,8 @@ interface ComicBookDAO {
     @Query("DELETE from ComicBooks")
     fun deleteAll()
 
-    @Insert
-    fun insert(comicBook: ComicBookEntity)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(comicBook: ComicBookEntity): Long
 
     @Update
     fun update(comicBook: ComicBookEntity)

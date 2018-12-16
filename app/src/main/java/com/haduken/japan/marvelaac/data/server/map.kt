@@ -10,7 +10,6 @@ import com.haduken.japan.marvelaac.data.server.MapConst.COMIC_PATH
 import com.haduken.japan.marvelaac.data.server.MapConst.COMIC_THUMBNAIL
 import com.haduken.japan.marvelaac.data.server.MapConst.COMIC_TITLE
 import com.haduken.japan.marvelaac.data.server.MapConst.THUMBNAIL_LARGE
-import java.util.function.Consumer
 
 object MapConst {
     const val COMIC_ID = "id"
@@ -22,12 +21,12 @@ object MapConst {
     const val COMIC_EXTENSION = "extension"
     const val THUMBNAIL_LARGE = "/portrait_incredible."
 
-    const val COMIC_CREATORS = "creators"
+    const val COMIC_CREATORS = "serverCreators"
     const val COMIC_CREATORS_ITEMS = "items"
 
 }
 
-fun toComicBook(responseBody: String): ComicBook {
+fun toComicBook(responseBody: String): ServerComicBook {
     val jsonObject = JsonParser().parse(responseBody).asJsonObject
     val comicId = jsonObject.getAsJsonPrimitive(COMIC_ID).asString
     val title = jsonObject.getAsJsonPrimitive(COMIC_TITLE).asString
@@ -37,18 +36,18 @@ fun toComicBook(responseBody: String): ComicBook {
     val path = thumbnailObject.getAsJsonPrimitive(COMIC_PATH).asString
     val extension = thumbnailObject.getAsJsonPrimitive(COMIC_EXTENSION).asString
     val creators = toCreators(jsonObject.getAsJsonObject(COMIC_CREATORS).getAsJsonArray(COMIC_CREATORS_ITEMS))
-    return ComicBook(comicId, title, description, path + THUMBNAIL_LARGE + extension, creators)
+    return ServerComicBook(comicId, title, description, path + THUMBNAIL_LARGE + extension, creators)
 }
 
-fun toCreators(jsonArray: JsonArray): List<Creator> {
-    val creators = mutableListOf<Creator>()
+fun toCreators(jsonArray: JsonArray): List<ServerCreator> {
+    val creators = mutableListOf<ServerCreator>()
     jsonArray.forEach {
         creators.add(toCreator(it.asJsonObject))
     }
     return creators
 }
 
-fun toCreator(jsonObject: JsonObject): Creator {
+fun toCreator(jsonObject: JsonObject): ServerCreator {
     return Gson().fromJson(jsonObject)
 }
 

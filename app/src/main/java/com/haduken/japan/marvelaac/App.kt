@@ -1,14 +1,14 @@
 package com.haduken.japan.marvelaac
 
 import android.app.Application
-import com.haduken.japan.marvelaac.di.AppInjector
+import com.haduken.japan.marvelaac.di.AppComponent
 import com.haduken.japan.marvelaac.di.DaggerAppInjector
 import com.haduken.japan.marvelaac.di.module.ContextModule
 
 class App : Application() {
 
     companion object {
-        lateinit var appInjector: AppInjector
+        lateinit var appInjector: AppComponent
     }
 
     override fun onCreate() {

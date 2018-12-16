@@ -17,7 +17,7 @@ abstract class DataBase : RoomDatabase() {
 
     abstract fun comicBookDAO(): ComicBookDAO
 
-    abstract fun artistDAO(): CreatorDAO
+    abstract fun creatorDAO(): CreatorDAO
 
     abstract fun comicJoinsDAO(): ComicCreatorJoinDAO
 

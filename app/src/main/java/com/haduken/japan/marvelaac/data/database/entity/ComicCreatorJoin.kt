@@ -4,14 +4,14 @@ import androidx.room.*
 
 import androidx.annotation.NonNull
 
-@Entity(primaryKeys = ["comicId", "creatorUri"],
+@Entity(primaryKeys = ["comicPrimaryId", "creatorPrimaryId"],
         foreignKeys = [
             ForeignKey(entity = ComicBookEntity::class,
                     parentColumns = ["id"],
-                    childColumns = ["comicId"]),
+                    childColumns = ["comicPrimaryId"]),
             ForeignKey(entity = CreatorEntity::class,
                     parentColumns = ["id"],
-                    childColumns = ["creatorUri"])
+                    childColumns = ["creatorPrimaryId"])
         ],
-        indices = [Index("creatorUri")])
-class ComicCreatorJoin(@NonNull val comicId: Long, @NonNull val creatorUri: Long)
+        indices = [Index("comicPrimaryId"), Index("creatorPrimaryId")])
+class ComicCreatorJoin(@NonNull val comicPrimaryId: Long, @NonNull val creatorPrimaryId: Long)

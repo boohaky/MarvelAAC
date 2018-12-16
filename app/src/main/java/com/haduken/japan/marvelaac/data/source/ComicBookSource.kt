@@ -2,13 +2,16 @@ package com.haduken.japan.marvelaac.data.source
 
 import com.haduken.japan.marvelaac.data.StoreOption
 import com.haduken.japan.marvelaac.domain.model.ComicBook
+import com.haduken.japan.marvelaac.domain.model.ComicBookItem
 
 
 interface ComicBookSource {
 
     fun getComicBook(comicId: String): DataSourceResponse<ComicBook>
 
-    fun getComicBookItems(comicId: String): DataSourceResponse<List<ComicBook>>
+    fun getComicBooks(): DataSourceResponse<List<ComicBook>>
+
+    fun getComicBookItems(): DataSourceResponse<List<ComicBookItem>>
 
 }
 

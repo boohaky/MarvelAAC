@@ -1,6 +1,8 @@
 package com.haduken.japan.marvelaac.data.source
 
 import com.haduken.japan.marvelaac.domain.model.ComicBook
+import com.haduken.japan.marvelaac.domain.model.ComicBookItem
+import com.haduken.japan.marvelaac.domain.model.toComicBookItem
 import javax.inject.Inject
 
 class CacheComicBookSource @Inject constructor() : DataComicBookSource {
@@ -16,9 +18,12 @@ class CacheComicBookSource @Inject constructor() : DataComicBookSource {
         }
     }
 
-    override fun getComicBookItems(comicId: String): DataSourceResponse<List<ComicBook>> {
+    override fun getComicBooks(): DataSourceResponse<List<ComicBook>> {
         return DataSourceResponse.success(comicBooks.toList())
+    }
 
+    override fun getComicBookItems(): DataSourceResponse<List<ComicBookItem>> {
+        return DataSourceResponse.success(comicBooks.map { toComicBookItem(it) })
     }
 
     override fun save(comicBook: ComicBook) {

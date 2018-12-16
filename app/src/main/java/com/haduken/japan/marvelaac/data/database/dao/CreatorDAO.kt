@@ -10,14 +10,14 @@ interface CreatorDAO {
     @Query("SELECT * from Creators")
     fun getAll(): List<CreatorEntity>
 
-    @Query("SELECT * from Creators LIMIT :limit OFFSET :offset")
-    fun getData(limit: Int, offset: Int): List<CreatorEntity>
+    @Query("SELECT * from Creators WHERE id IN (:primaryCreatorIds)")
+    fun getCreatorsByPrimaryIds(primaryCreatorIds: List<Long>): List<CreatorEntity>
 
     @Query("DELETE from Creators")
     fun deleteAll()
 
-    @Insert
-    fun insert(creator: CreatorEntity)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(creator: CreatorEntity): Long
 
     @Update
     fun update(creator: CreatorEntity)
