@@ -9,5 +9,5 @@ import androidx.annotation.NonNull
 data class ComicBookEntity(@PrimaryKey(autoGenerate = true) val id: Long = 0,
                            @NonNull val comicId: String,
                            val title: String,
-                           val description: String,
+                           val description: String?,
                            val artUrl: String)

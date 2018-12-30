@@ -2,7 +2,7 @@ package com.haduken.japan.marvelaac
 
 import android.app.Application
 import com.haduken.japan.marvelaac.di.AppComponent
-import com.haduken.japan.marvelaac.di.DaggerAppInjector
+import com.haduken.japan.marvelaac.di.DaggerAppComponent
 import com.haduken.japan.marvelaac.di.module.ContextModule
 
 class App : Application() {
@@ -13,7 +13,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        appInjector = DaggerAppInjector.builder().contextModule(ContextModule(this)).build()
+        appInjector = DaggerAppComponent.builder().contextModule(ContextModule(this)).build()
     }
 
 }

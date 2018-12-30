@@ -9,12 +9,10 @@ import com.haduken.japan.marvelaac.domain.model.toComicBookItem
 import com.haduken.japan.marvelaac.extensions.chooseFirstSuccess
 import com.haduken.japan.marvelaac.extensions.chooseFirstSuccessNotEmpty
 import java.util.concurrent.Executors
-import javax.inject.Inject
 
-
-class ComicBookRepositoryImpl @Inject constructor(private val serverSource: ServerComicSource,
-                                                  private val databaseSource: DataBaseComicSource,
-                                                  private val cacheSources: CacheComicBookSource) : ComicBookRepository {
+class ComicBookRepositoryImpl(private val serverSource: ServerComicSource,
+                              private val databaseSource: DataBaseComicSource,
+                              private val cacheSources: CacheComicBookSource) : ComicBookRepository {
 
     private val dataBaseThreadExecutor = Executors.newFixedThreadPool(2)
     private val serverThreadExecutor = Executors.newFixedThreadPool(2)

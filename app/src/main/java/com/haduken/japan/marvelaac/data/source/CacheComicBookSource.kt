@@ -3,9 +3,8 @@ package com.haduken.japan.marvelaac.data.source
 import com.haduken.japan.marvelaac.domain.model.ComicBook
 import com.haduken.japan.marvelaac.domain.model.ComicBookItem
 import com.haduken.japan.marvelaac.domain.model.toComicBookItem
-import javax.inject.Inject
 
-class CacheComicBookSource @Inject constructor() : DataComicBookSource {
+class CacheComicBookSource : DataComicBookSource {
 
     private var comicBooks: MutableSet<ComicBook> = hashSetOf()
 

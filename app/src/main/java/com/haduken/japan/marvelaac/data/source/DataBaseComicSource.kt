@@ -8,9 +8,8 @@ import com.haduken.japan.marvelaac.domain.model.ComicBook
 import com.haduken.japan.marvelaac.domain.model.ComicBookItem
 import com.haduken.japan.marvelaac.domain.model.toComicBook
 import com.haduken.japan.marvelaac.domain.model.toComicBookItem
-import javax.inject.Inject
 
-class DataBaseComicSource @Inject constructor(private val dataBase: DataBase) : DataComicBookSource {
+class DataBaseComicSource(private val dataBase: DataBase) : DataComicBookSource {
 
     override fun getComicBook(comicId: String): DataSourceResponse<ComicBook> {
         val comicBookEntity = dataBase.comicBookDAO().getSingeData(comicId)
