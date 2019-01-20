@@ -9,13 +9,14 @@ apply plugin: 'kotlin-kapt'
 android {
 
     compileSdkVersion project.currentSDK
+    
     defaultConfig {
         applicationId "com.haduken.japan.marvelaac"
         minSdkVersion project.minSDK
         targetSdkVersion project.currentSDK
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         kapt {
             arguments {
@@ -23,6 +24,7 @@ android {
             }
         }
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -57,6 +59,12 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$project.daggerVersion"
     // Test
     testImplementation "junit:junit:$project.junitVersion"
-    androidTestImplementation "androidx.test:runner:$project.testRunnerVersion"
+    
+    androidTestImplementation "androidx.test:core:$project.testVersion"
+
+    androidTestImplementation "androidx.test.ext:junit:$project.testVersion"
+    androidTestImplementation "androidx.test:rules:$project.testVersion"
+    
     androidTestImplementation "androidx.test.espresso:espresso-core:$project.esspressoVersion"
+
 }
