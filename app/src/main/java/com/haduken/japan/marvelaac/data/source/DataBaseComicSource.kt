@@ -13,18 +13,18 @@ class DataBaseComicSource(private val dataBase: DataBase) : DataComicBookSource 
 
     override fun getComicBook(comicId: String): DataSourceResponse<ComicBook> {
         val comicBookEntity = dataBase.comicBookDAO().getSingeData(comicId)
-        val comicCreatorJoins = dataBase.comicJoinsDAO().getAllByComicId(comicBookEntity.id)
+        val comicCreatorJoins = dataBase.comicJoinsDAO().getAllByComicId(comicId)
         val creatorEntities = dataBase.creatorDAO().getCreatorsByPrimaryIds(comicCreatorJoins.map { it.creatorPrimaryId })
         return DataSourceResponse.success(toComicBook(comicBookEntity, creatorEntities))
     }
 
     override fun getComicBooks(): DataSourceResponse<List<ComicBook>> {
         val comicBookEntities = dataBase.comicBookDAO().getAll()
-        val comicCreatorJoins = dataBase.comicJoinsDAO().getAllByComicIds(comicBookEntities.map { it.id })
+        val comicCreatorJoins = dataBase.comicJoinsDAO().getAllByComicIds(comicBookEntities.map { it.comicId })
         val creatorEntities = dataBase.creatorDAO().getCreatorsByPrimaryIds(comicCreatorJoins.map { it.creatorPrimaryId })
         return DataSourceResponse.success(comicBookEntities.map { comicEntity ->
-            val creatorPrimaryIds = comicCreatorJoins.filter { it.comicPrimaryId ==  comicEntity.id}.map { it.creatorPrimaryId }
-            toComicBook(comicEntity, creatorEntities.filter { creatorPrimaryIds.contains(it.id) })
+            val creatorPrimaryIds = comicCreatorJoins.filter { it.comicPrimaryId ==  comicEntity.comicId}.map { it.creatorPrimaryId }
+            toComicBook(comicEntity, creatorEntities.filter { creatorPrimaryIds.contains(it.creatorUri) })
         })
     }
 
@@ -50,10 +50,10 @@ class DataBaseComicSource(private val dataBase: DataBase) : DataComicBookSource 
     }
 
     private fun saveComicToDataBase(comicEntity: ComicBookEntity, creatorEntities: List<CreatorEntity>) {
-        val comicPrimaryId = dataBase.comicBookDAO().insert(comicEntity)
+        dataBase.comicBookDAO().insert(comicEntity)
         creatorEntities.forEach {
-            val creatorPrimaryId = dataBase.creatorDAO().insert(it)
-            dataBase.comicJoinsDAO().insert(ComicCreatorJoin(comicPrimaryId, creatorPrimaryId))
+            dataBase.creatorDAO().insert(it)
+            dataBase.comicJoinsDAO().insert(ComicCreatorJoin(comicEntity.comicId, it.creatorUri))
         }
     }
 }

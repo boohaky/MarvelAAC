@@ -1,18 +1,17 @@
-package com.haduken.japan.marvelaac
+package com.haduken.japan.marvelaac.database
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.haduken.japan.marvelaac.data.database.DataBase
-import org.junit.Assert.assertEquals
+import com.haduken.japan.marvelaac.data.database.entity.CreatorEntity
+import com.haduken.japan.marvelaac.domain.model.ComicBook
 import org.junit.Before
-import org.junit.Test
-import org.junit.runner.RunWith
 
-@RunWith(AndroidJUnit4::class)
-class DatabaseTest {
+class DatabaseSourseTest {
 
     private lateinit var database: DataBase
+
+    private val books = mutableListOf<ComicBook>()
 
     @Before
     fun initDatabase() {
@@ -24,17 +23,17 @@ class DatabaseTest {
         System.out.println("<< initDatabase")
     }
 
+    fun initBooks() {
+        for (i in 0..5) {
+            val creator = CreatorEntity("creatorId$i", "creatorName$i", "artist")
+        }
+    }
+
     @Before
     fun clearData() {
         System.out.println("clearData")
+        database.deleteAllData()
         database.close()
-    }
-
-    @Test
-    fun simpleDataBaseTest() {
-        System.out.println("simpleDataBaseTest")
-        val books = database.comicBookDAO().getAll()
-        assertEquals(books.size, 0)
     }
 
 }

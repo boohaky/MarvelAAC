@@ -7,11 +7,11 @@ import androidx.annotation.NonNull
 @Entity(primaryKeys = ["comicPrimaryId", "creatorPrimaryId"],
         foreignKeys = [
             ForeignKey(entity = ComicBookEntity::class,
-                    parentColumns = ["id"],
+                    parentColumns = ["comicId"],
                     childColumns = ["comicPrimaryId"]),
             ForeignKey(entity = CreatorEntity::class,
-                    parentColumns = ["id"],
+                    parentColumns = ["creatorUri"],
                     childColumns = ["creatorPrimaryId"])
         ],
         indices = [Index("comicPrimaryId"), Index("creatorPrimaryId")])
-class ComicCreatorJoin(@NonNull val comicPrimaryId: Long, @NonNull val creatorPrimaryId: Long)
+class ComicCreatorJoin(@NonNull val comicPrimaryId: String, @NonNull val creatorPrimaryId: String)

@@ -20,9 +20,12 @@ interface ComicCreatorJoinDAO {
     fun getAll(): List<ComicCreatorJoin>
 
     @Query("SELECT * from ComicCreatorJoin WHERE comicPrimaryId = :comicPrimaryId")
-    fun getAllByComicId(comicPrimaryId: Long): List<ComicCreatorJoin>
+    fun getAllByComicId(comicPrimaryId: String): List<ComicCreatorJoin>
 
     @Query("SELECT * from ComicCreatorJoin WHERE comicPrimaryId IN (:comicPrimaryIds)")
-    fun getAllByComicIds(comicPrimaryIds: List<Long>): List<ComicCreatorJoin>
+    fun getAllByComicIds(comicPrimaryIds: List<String>): List<ComicCreatorJoin>
+
+    @Query("DELETE from ComicCreatorJoin")
+    fun deleteAll()
 
 }

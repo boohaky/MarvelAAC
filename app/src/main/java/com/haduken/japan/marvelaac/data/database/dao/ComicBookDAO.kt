@@ -20,9 +20,9 @@ interface ComicBookDAO {
     fun deleteAll()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(comicBook: ComicBookEntity): Long
+    fun insert(comicBook: ComicBookEntity)
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     fun update(comicBook: ComicBookEntity)
 
     @Delete

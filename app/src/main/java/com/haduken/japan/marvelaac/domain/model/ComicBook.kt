@@ -4,7 +4,7 @@ import com.haduken.japan.marvelaac.data.database.entity.ComicBookEntity
 import com.haduken.japan.marvelaac.data.database.entity.CreatorEntity
 import com.haduken.japan.marvelaac.data.server.ServerComicBook
 
-data class ComicBook(val comicId: String, val title: String, val description: String?, val artUrl: String,
+data class ComicBook(val comicId: String, val title: String, val description: String?, val artUrl: String?,
                      val creators: List<Creator>) {
 
     override fun equals(other: Any?): Boolean {
@@ -35,7 +35,7 @@ fun toComicBook(serverComicBook: ServerComicBook): ComicBook {
             })
 }
 
-data class ComicBookItem(val comicId: String, val title: String, val artUrl: String) {
+data class ComicBookItem(val comicId: String, val title: String, val artUrl: String?) {
 
     override fun equals(other: Any?): Boolean {
         return if (other !is ComicBook) {

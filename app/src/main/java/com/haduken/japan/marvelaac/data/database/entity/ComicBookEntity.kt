@@ -1,13 +1,11 @@
 package com.haduken.japan.marvelaac.data.database.entity
 
-import androidx.room.*
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-import androidx.annotation.NonNull
 
-
-@Entity(tableName = "ComicBooks", indices = [(Index(value = ["comicId"], unique = true))])
-data class ComicBookEntity(@PrimaryKey(autoGenerate = true) val id: Long = 0,
-                           @NonNull val comicId: String,
+@Entity(tableName = "ComicBooks")
+data class ComicBookEntity(@PrimaryKey val comicId: String,
                            val title: String,
-                           val description: String?,
-                           val artUrl: String)
+                           val description: String? = null,
+                           val artUrl: String? = null)
