@@ -24,9 +24,9 @@ abstract class DataBase : RoomDatabase() {
     abstract fun comicJoinsDAO(): ComicCreatorJoinDAO
 
     fun deleteAllData() {
-        comicBookDAO().deleteAll()
-        creatorDAO().deleteAll()
         comicJoinsDAO().deleteAll()
+        creatorDAO().deleteAll()
+        comicBookDAO().deleteAll()
     }
 
 
