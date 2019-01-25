@@ -12,7 +12,7 @@ import com.haduken.japan.marvelaac.domain.model.toComicBookItem
 class DataBaseComicSource(private val dataBase: DataBase) : DataComicBookSource {
 
     override fun getComicBook(comicId: String): DataSourceResponse<ComicBook> {
-        val comicBookEntity = dataBase.comicBookDAO().getSingeData(comicId)
+        val comicBookEntity = dataBase.comicBookDAO().getSingeData(comicId) ?: return DataSourceResponse.error()
         val comicCreatorJoins = dataBase.comicJoinsDAO().getAllByComicId(comicId)
         val creatorEntities = dataBase.creatorDAO().getCreatorsByPrimaryIds(comicCreatorJoins.map { it.creatorPrimaryId })
         return DataSourceResponse.success(toComicBook(comicBookEntity, creatorEntities))
@@ -23,7 +23,7 @@ class DataBaseComicSource(private val dataBase: DataBase) : DataComicBookSource 
         val comicCreatorJoins = dataBase.comicJoinsDAO().getAllByComicIds(comicBookEntities.map { it.comicId })
         val creatorEntities = dataBase.creatorDAO().getCreatorsByPrimaryIds(comicCreatorJoins.map { it.creatorPrimaryId })
         return DataSourceResponse.success(comicBookEntities.map { comicEntity ->
-            val creatorPrimaryIds = comicCreatorJoins.filter { it.comicPrimaryId ==  comicEntity.comicId}.map { it.creatorPrimaryId }
+            val creatorPrimaryIds = comicCreatorJoins.filter { it.comicPrimaryId == comicEntity.comicId }.map { it.creatorPrimaryId }
             toComicBook(comicEntity, creatorEntities.filter { creatorPrimaryIds.contains(it.creatorUri) })
         })
     }

@@ -14,7 +14,7 @@ import retrofit2.Call
 import retrofit2.http.Query
 
 
-interface ComicListService {
+interface ComicService {
 
     @GET("/v1/public/series/{seriesId}")
     fun getComicSeries(@Path("seriesId") seriesId: String = Info.AMAZING_SPIDER_MAN_ID,
@@ -35,7 +35,7 @@ interface ComicListService {
                      @Query("hash") hash: String = (ts + PrivateInfo.PRIVATE_KEY + PrivateInfo.PUBLIC_KEY).md5()): Call<ResponseBody>
 
     companion object {
-        val INSTANCE: ComicListService by lazy {
+        val INSTANCE: ComicService by lazy {
             val logging = HttpLoggingInterceptor()
             logging.level = HttpLoggingInterceptor.Level.BODY
             val httpClient = OkHttpClient.Builder()
@@ -46,7 +46,7 @@ interface ComicListService {
                     .baseUrl("https://gateway.marvel.com:443")
                     .client(httpClient.build())
                     .build()
-            retrofit.create(ComicListService::class.java)
+            retrofit.create(ComicService::class.java)
         }
 
     }

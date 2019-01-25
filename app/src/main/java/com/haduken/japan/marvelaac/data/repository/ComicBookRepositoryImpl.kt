@@ -19,21 +19,12 @@ class ComicBookRepositoryImpl(private val serverSource: ServerComicSource,
 
     override fun getComicBook(comicId: String, complete: (ComicBook) -> Unit,
                               error: (Exception) -> Unit) {
-        serverThreadExecutor.submit {
-            val response = serverSource.getComicBook(comicId)
-            if (response.success) {
-                val comicBook = response.getResponseData()
-                complete.invoke(comicBook)
-                databaseSource.save(comicBook)
-                cacheSources.save(comicBook)
-            } else {
-                error.invoke(response.getError())
-            }
-        }
         dataBaseThreadExecutor.submit {
             val response = chooseFirstSuccess(cacheSources.getComicBook(comicId), databaseSource.getComicBook(comicId))
-            response?.let {
+            if (response != null) {
                 complete.invoke(response.getResponseData())
+            } else {
+                error.invoke(NullPointerException())
             }
         }
     }

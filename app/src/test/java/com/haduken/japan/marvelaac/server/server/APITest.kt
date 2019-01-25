@@ -1,6 +1,6 @@
 package com.haduken.japan.marvelaac.server.server
 
-import com.haduken.japan.marvelaac.server.TestComicListService
+import com.haduken.japan.marvelaac.server.TestComicService
 import org.junit.Test
 
 class APITest {
@@ -12,7 +12,7 @@ class APITest {
 
     @Test
     fun gertComicSeriesIsCorrect() {
-        val call = TestComicListService.INSTANCE.getComicSeries()
+        val call = TestComicService.INSTANCE.getComicSeries()
         val responseBody = call.execute()
         System.out.println(responseBody)
         if (responseBody.isSuccessful) {
@@ -24,7 +24,7 @@ class APITest {
 
     @Test
     fun getComicsInSeriesIsCorrect() {
-        val call = TestComicListService.INSTANCE.getComicsInSeries()
+        val call = TestComicService.INSTANCE.getComicsInSeries()
         val responseBody = call.execute()
         System.out.println(responseBody)
         if (responseBody.isSuccessful) {
@@ -36,7 +36,7 @@ class APITest {
 
     @Test
     fun getComicInfoIsCorrect() {
-        val call = TestComicListService.INSTANCE.getComicInfo(TEST_COMIC_ID)
+        val call = TestComicService.INSTANCE.getComicInfo(TEST_COMIC_ID)
         val responseBody = call.execute()
         System.out.println(responseBody)
         if (responseBody.isSuccessful) {

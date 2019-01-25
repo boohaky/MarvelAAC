@@ -1,19 +1,19 @@
 package com.haduken.japan.marvelaac.server
 
-import com.haduken.japan.marvelaac.data.server.ComicListService
+import com.haduken.japan.marvelaac.data.server.ComicService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-internal interface TestComicListService : ComicListService {
+internal interface TestComicService : ComicService {
 
     companion object {
 
-        val INSTANCE: ComicListService by lazy {
+        val INSTANCE: ComicService by lazy {
             val retrofit = Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create())
                     .baseUrl("https://gateway.marvel.com:443")
                     .build()
-            retrofit.create(ComicListService::class.java)
+            retrofit.create(ComicService::class.java)
         }
 
     }

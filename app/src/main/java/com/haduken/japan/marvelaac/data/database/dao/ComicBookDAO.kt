@@ -8,7 +8,7 @@ import androidx.room.*
 interface ComicBookDAO {
 
     @Query("SELECT * from ComicBooks WHERE comicId = :comicId")
-    fun getSingeData(comicId: String): ComicBookEntity
+    fun getSingeData(comicId: String): ComicBookEntity?
 
     @Query("SELECT * from ComicBooks")
     fun getAll(): List<ComicBookEntity>

@@ -14,7 +14,7 @@ buildscript {
         lifecycle_version = "2.0.0"
         navVersion = '1.0.0-alpha06'
         retrofitVersion = '2.4.0'
-        okHTTPVersion = '3.0.1'
+        okHTTPVersion = '3.9.1'
         roomVersion = '2.0.0-rc01'
         daggerVersion = '2.17'
         junitVersion = '4.12'

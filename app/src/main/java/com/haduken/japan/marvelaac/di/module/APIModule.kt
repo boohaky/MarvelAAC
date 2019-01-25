@@ -1,6 +1,6 @@
 package com.haduken.japan.marvelaac.di.module
 
-import com.haduken.japan.marvelaac.data.server.ComicListService
+import com.haduken.japan.marvelaac.data.server.ComicService
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -10,8 +10,8 @@ class APIModule {
 
     @Provides
     @Singleton
-    fun provideComicListService(): ComicListService {
-        return ComicListService.INSTANCE
+    fun provideComicListService(): ComicService {
+        return ComicService.INSTANCE
     }
 
 }

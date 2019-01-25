@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import com.haduken.japan.marvelaac.data.repository.ComicBookRepository
 import com.haduken.japan.marvelaac.domain.ComicBookUseCase
 import com.haduken.japan.marvelaac.domain.model.ComicBook
-import javax.inject.Inject
 
 
 class ComicDataViewModel(application: Application) : AndroidViewModel(application) {

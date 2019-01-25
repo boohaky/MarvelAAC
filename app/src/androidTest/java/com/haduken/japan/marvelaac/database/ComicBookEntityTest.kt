@@ -3,8 +3,10 @@ package com.haduken.japan.marvelaac.database
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.haduken.japan.marvelaac.TestDataBase
 import com.haduken.japan.marvelaac.data.database.DataBase
 import com.haduken.japan.marvelaac.data.database.entity.ComicBookEntity
+import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -20,12 +22,12 @@ class ComicBookEntityTest {
         System.out.println(">> initDatabase")
         // Context of the app under test.
         val appContext = ApplicationProvider.getApplicationContext<Context>()
-        database = DataBase.getInstance(appContext)
+        database = TestDataBase.getInstance(appContext)
         System.out.println("databaseObtained")
         System.out.println("<< initDatabase")
     }
 
-    @Before
+    @After
     fun clearData() {
         System.out.println("clearData")
         database.deleteAllData()
