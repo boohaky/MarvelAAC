@@ -5,8 +5,8 @@ import com.haduken.japan.marvelaac.domain.model.ComicBookItem
 
 interface ComicBookRepository {
 
-    fun getComicBook(comicId: String, complete: (ComicBook) -> Unit, error: (Exception) -> Unit = {})
+    fun getComicBook(comicId: String, callback: RepositoryCallback<ComicBook>)
 
-    fun getComicBookItems(complete: (List<ComicBookItem>) -> Unit, error: (Exception) -> Unit = {})
+    fun getComicBookItems(callback: RepositoryCallback<List<ComicBookItem>>)
 
 }

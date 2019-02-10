@@ -8,6 +8,7 @@ import com.haduken.japan.marvelaac.domain.model.ComicBookItem
 import com.haduken.japan.marvelaac.domain.model.toComicBookItem
 import com.haduken.japan.marvelaac.extensions.chooseFirstSuccess
 import com.haduken.japan.marvelaac.extensions.chooseFirstSuccessNotEmpty
+import java.util.concurrent.CountDownLatch
 import java.util.concurrent.Executors
 
 class ComicBookRepositoryImpl(private val serverSource: ServerComicSource,
@@ -17,35 +18,45 @@ class ComicBookRepositoryImpl(private val serverSource: ServerComicSource,
     private val dataBaseThreadExecutor = Executors.newFixedThreadPool(2)
     private val serverThreadExecutor = Executors.newFixedThreadPool(2)
 
-    override fun getComicBook(comicId: String, complete: (ComicBook) -> Unit,
-                              error: (Exception) -> Unit) {
+    override fun getComicBook(comicId: String, callback: RepositoryCallback<ComicBook>) {
         dataBaseThreadExecutor.submit {
             val response = chooseFirstSuccess(cacheSources.getComicBook(comicId), databaseSource.getComicBook(comicId))
             if (response != null) {
-                complete.invoke(response.getResponseData())
+                callback.onNext(response.getResponseData())
             } else {
-                error.invoke(NullPointerException())
+                callback.onError(NullPointerException())
             }
+            callback.onComplete()
         }
     }
 
-    override fun getComicBookItems(complete: (List<ComicBookItem>) -> Unit,
-                                   error: (Exception) -> Unit) {
+    override fun getComicBookItems(callback: RepositoryCallback<List<ComicBookItem>>) {
+        val countDownLatch = CountDownLatch(2)
         serverThreadExecutor.submit {
             val response = serverSource.getComicBooks()
             if (response.success) {
                 val comicBooks = response.getResponseData()
-                complete.invoke(comicBooks.map { toComicBookItem(it) })
+                callback.onNext(comicBooks.map { toComicBookItem(it) })
                 databaseSource.save(comicBooks)
                 cacheSources.save(comicBooks)
             } else {
-                error.invoke(response.getError())
+                callback.onError(response.getError())
+            }
+            countDownLatch.countDown()
+            if (countDownLatch.count == 0L) {
+                callback.onComplete()
             }
         }
         dataBaseThreadExecutor.submit {
             val comicBookItems = chooseFirstSuccessNotEmpty(cacheSources.getComicBookItems(), databaseSource.getComicBookItems())
-            comicBookItems?.let {
-                complete.invoke(comicBookItems)
+            if (comicBookItems != null) {
+                callback.onNext(comicBookItems)
+            } else {
+                callback.onError(NullPointerException())
+            }
+            countDownLatch.countDown()
+            if (countDownLatch.count == 0L) {
+                callback.onComplete()
             }
         }
     }

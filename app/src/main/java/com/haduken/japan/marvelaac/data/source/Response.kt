@@ -9,7 +9,7 @@ open class SourceResponse protected constructor(val success: Boolean = true,
             return SourceResponse(true)
         }
 
-        fun error(exception: Exception): SourceResponse {
+        fun error(exception: Exception? = null): SourceResponse {
             return SourceResponse(false, exception)
         }
 
@@ -29,12 +29,7 @@ class DataSourceResponse<T> private constructor(success: Boolean = true, excepti
             return DataSourceResponse(success = true, data = data)
         }
 
-        fun <T> error(): DataSourceResponse<T> {
-            return error(NullPointerException())
-        }
-
-
-        fun <T> error(exception: Exception): DataSourceResponse<T> {
+        fun <T> error(exception: Exception? = null): DataSourceResponse<T> {
             return DataSourceResponse(false, exception, null)
         }
 
